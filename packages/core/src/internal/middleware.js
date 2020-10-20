@@ -24,7 +24,7 @@ export default function sagaMiddlewareFactory({ context = {}, channel = stdChann
       if (sagaMonitor && sagaMonitor.actionDispatched) {
         sagaMonitor.actionDispatched(action)
       }
-      const result = next(action) // hit reducers
+      const result = next(action) // hit reducers, 不是所有的 action 都会被用户的 reducers 处理
       channel.put(action)
       return result
     }
